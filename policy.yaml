@@ -1,0 +1,26 @@
+# What Claude Code may reach from inside the sandbox, signed in with a Claude subscription.
+# Everything not listed here is refused.
+version: 1
+
+network_policies:
+  # The model API.
+  anthropic_api:
+    endpoints:
+      - host: api.anthropic.com
+        port: 443
+        protocol: rest
+        access: read-write
+        enforcement: enforce
+    binaries:
+      - path: /usr/local/lib/node_modules/@anthropic-ai/claude-code/bin/claude.exe
+
+  # Sign-in with the subscription.
+  claude_login:
+    endpoints:
+      - host: platform.claude.com
+        port: 443
+        protocol: rest
+        access: read-write
+        enforcement: enforce
+    binaries:
+      - path: /usr/local/lib/node_modules/@anthropic-ai/claude-code/bin/claude.exe
